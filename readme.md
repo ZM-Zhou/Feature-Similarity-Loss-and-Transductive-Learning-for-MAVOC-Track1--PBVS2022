@@ -9,7 +9,7 @@ conda activate pytorch170cu11
 ```
 
 ## Testing
-In order to test the method, you should firstly download the data from the competition [web page](https://codalab.lisn.upsaclay.fr/competitions/1388#participate) and unzip it into `Datasets/test_images/-1`, where `-1` means that they do not have labels. Or you could use the subset of the test data that we have put in the repository for just running the code. Then, please download our pertained models (which achieves the 31.23% top-1 accuracy on the test phase) from [Here](https://drive.google.com/drive/folders/1i-mOleUGNbw66WtraV3GYl5qEwORddsQ?usp=sharing) and put them into `trained_model`.
+In order to test the method, you should firstly download the data from the competition [web page](https://codalab.lisn.upsaclay.fr/competitions/1388#participate) and unzip it into `Datasets/test_images/-1`, where `-1` means that they do not have labels. Or you could use the subset of the test data that we have put in the repository for just running the code. Then, please download our pertained models (which achieves the 31.23% top-1 accuracy on the test phase) from [Here](https://drive.google.com/drive/folders/1i-mOleUGNbw66WtraV3GYl5qEwORddsQ?usp=sharing) and put them into a new folder named `trained_model`.
 
 Finally, you could simply run the script. `CUDA_VISIBLE_DEVICES` in the script is used to specify which GPU to use in a multi-GPU device.
 
@@ -17,7 +17,7 @@ Finally, you could simply run the script. `CUDA_VISIBLE_DEVICES` in the script i
 bash test.sh
 ```
 On an NVIDIA RTX 2080Ti GPU, the run time for testing one image is about 5.5ms when the batch size is set to 128. You could set a smaller batch size in the script if there is no enough GPU memory, which has no effect on the results but on the run time. After running the above script, the results `results.csv` will be saved in `results/`.
-It is noted that if you have trained the model by yourself (described in the next part), please copy the last trained model (`last_backbone.pth` and `last_cls_head.pth`) saved in `train_log/SwinB-Stage2` to the folder `trained_model` before running the script.
+It is noted that if you have trained the model by yourself (described in the next part), please copy the last trained model (`last_backbone.pth` and `last_cls_head.pth`) saved in `train_log/SwinB-Stage2` to a new folder named `trained_model` before running the script.
 
 ## Training
 ### Dataset prepare
@@ -43,7 +43,7 @@ It is noted that all the test images are putted into a folder named `-1`, which 
 ### Pretrained model prepare
 
 Please download the pretraiend Swin backbone from [Here](https://drive.google.com/drive/folders/11ObxezC0S6hcKg2DsmYsXCVgCNWIEW8d?usp=sharing) or the `Swin-B/ImageNet-22k/224x224/22K model` in Table `ImageNet-1K and ImageNet-22K Pretrained Models` provided in the Swin [official implementation](https://github.com/microsoft/Swin-Transformer).
-The pretrained backbone `swin_base_patch4_window7_224_22k.pth`  should be putted into the folder `pretrained_backbone`,
+The pretrained backbone `swin_base_patch4_window7_224_22k.pth`  should be putted into a new folder named  `pretrained_backbone`,
 
 ### Start training
 

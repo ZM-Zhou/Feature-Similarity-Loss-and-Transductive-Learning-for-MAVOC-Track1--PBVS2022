@@ -450,6 +450,7 @@ def test():
     preds = torch.cat(preds, dim=1).squeeze(0)
     # probs = torch.cat(probs, dim=1).squeeze(0)
     # top_probs, top_preds = torch.topk(probs, 1, -1)
+    os.makedirs('results', exist_ok=True)
     with open('results/results.csv', 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['image_id', 'class_id'])
